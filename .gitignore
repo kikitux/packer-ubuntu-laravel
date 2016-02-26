@@ -1,0 +1,4 @@
+/packer_cache
+/source/*.vmdk
+/source/*.ovf
+/*.box

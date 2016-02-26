@@ -1,0 +1,24 @@
+{
+	"builders": [
+		{
+			"type": "virtualbox-ovf",
+			"source_path": "source/box.ovf",
+			"ssh_username": "vagrant",
+			"ssh_password": "vagrant",
+			"shutdown_command": "sudo shutdown -P now",
+			"guest_additions_mode": "disable"
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "provision.sh"
+		}
+	],
+	"post-processors": [
+		{
+			"type": "vagrant",
+			"compression_level": 9
+		}
+	]
+}
