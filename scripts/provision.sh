@@ -1,9 +1,10 @@
 #!/bin/bash
 
 export DEBIAN_FRONTEND=noninteractive
-PACKAGES=(apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl nodejs npm git)
+unset PACKAGES
+PACKAGES="apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl nodejs npm git"
 sudo -E apt-get update
-sudo -E apt-get install -y -q --no-install-recommends "${PACKAGES[@]}"
+sudo -E apt-get install -y -q --no-install-recommends ${PACKAGES}
 
 sudo tee /etc/apache2/sites-enabled/000-default.conf >/dev/null <<-EOF
 	<Directory /vagrant/app/public>
