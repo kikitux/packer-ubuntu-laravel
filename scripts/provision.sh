@@ -5,7 +5,6 @@ PACKAGES=(apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd
 sudo -E apt-get update
 sudo -E apt-get install -y -q --no-install-recommends "${PACKAGES[@]}"
 
-
 sudo tee /etc/apache2/sites-enabled/000-default.conf >/dev/null <<-EOF
 	<Directory /vagrant/app/public>
 	    Options Indexes FollowSymLinks
