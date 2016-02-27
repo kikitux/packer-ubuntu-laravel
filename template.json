@@ -6,7 +6,8 @@
 			"ssh_username": "vagrant",
 			"ssh_password": "vagrant",
 			"shutdown_command": "sudo shutdown -P now",
-			"guest_additions_mode": "disable"
+			"guest_additions_mode": "disable",
+			"headless": true
 		}
 	],
 	"provisioners": [
