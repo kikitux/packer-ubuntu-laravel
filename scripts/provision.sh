@@ -1,11 +1,15 @@
 #!/bin/bash
 
+# Add NodeSource repo
+curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
+# Install packages
 export DEBIAN_FRONTEND=noninteractive
 unset PACKAGES
-PACKAGES="apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl nodejs npm git"
-sudo -E apt-get update
+PACKAGES="apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl nodejs git"
 sudo -E apt-get install -y -q --no-install-recommends ${PACKAGES}
 
+# Setup Apache virtual host
 sudo tee /etc/apache2/sites-enabled/000-default.conf >/dev/null <<-EOF
 	<Directory /vagrant/app/public>
 	    Options Indexes FollowSymLinks
@@ -19,12 +23,13 @@ sudo tee /etc/apache2/sites-enabled/000-default.conf >/dev/null <<-EOF
 	</VirtualHost>
 	EOF
 
+# Install composer
 php -r "readfile('https://getcomposer.org/installer');" | php
 sudo mv composer.phar /usr/bin/composer
 sudo chown root:root /usr/bin/composer
 sudo chmod 755 /usr/bin/composer
 composer global require "laravel/installer"
-
 echo export PATH='${PATH}':~/.composer/vendor/bin | tee -a ~/.bash_profile
 
+# Delete /etc/udev/rules.d/70-persistent-net.rule if exists
 [ -f /etc/udev/rules.d/70-persistent-net.rule ] && sudo rm -f /etc/udev/rules.d/70-persistent-net.rule || true
