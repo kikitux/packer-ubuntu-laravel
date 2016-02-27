@@ -23,7 +23,7 @@ sudo tee /etc/apache2/sites-enabled/000-default.conf >/dev/null <<-EOF
 	</VirtualHost>
 	EOF
 
-# Install composer
+# Install Composer
 php -r "readfile('https://getcomposer.org/installer');" | php
 sudo mv composer.phar /usr/bin/composer
 sudo chown root:root /usr/bin/composer
@@ -31,5 +31,5 @@ sudo chmod 755 /usr/bin/composer
 composer global require "laravel/installer"
 echo export PATH='${PATH}':~/.composer/vendor/bin | tee -a ~/.bash_profile
 
-# Delete /etc/udev/rules.d/70-persistent-net.rule if exists
+# Delete /etc/udev/rules.d/70-persistent-net.rule if it exists
 [ -f /etc/udev/rules.d/70-persistent-net.rule ] && sudo rm -f /etc/udev/rules.d/70-persistent-net.rule || true
