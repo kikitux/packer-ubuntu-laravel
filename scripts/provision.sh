@@ -31,5 +31,8 @@ sudo chmod 755 /usr/bin/composer
 composer global require "laravel/installer"
 echo export PATH='${PATH}':~/.composer/vendor/bin | tee -a ~/.bash_profile
 
+# Cleanup
+sudo apt-get clean
+
 # Delete /etc/udev/rules.d/70-persistent-net.rule if it exists
 [ -f /etc/udev/rules.d/70-persistent-net.rule ] && sudo rm -f /etc/udev/rules.d/70-persistent-net.rule || true
