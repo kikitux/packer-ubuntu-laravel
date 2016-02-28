@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Use apt mirrors
+sudo sed -i \
+-e 's/http:\/\/us.archive.ubuntu.com\/ubuntu/mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/' \
+-e 's/http:\/\/archive.ubuntu.com\/ubuntu/mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/' \
+/etc/apt/sources.list
+
 # Add NodeSource repo
 curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
