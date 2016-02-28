@@ -45,3 +45,11 @@ sudo apt-get clean
 
 # Delete /etc/udev/rules.d/70-persistent-net.rule if it exists
 [ -f /etc/udev/rules.d/70-persistent-net.rule ] && sudo rm -f /etc/udev/rules.d/70-persistent-net.rule || true
+
+# Zero the filesystem to help compression
+sync
+sudo dd if=/dev/zero of=/EMPTY bs=1M || true
+sudo rm -f /EMPTY
+sync
+echo 3 > /proc/sys/vm/drop_caches
+sync
