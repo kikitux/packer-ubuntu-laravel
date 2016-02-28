@@ -31,6 +31,9 @@ sudo chmod 755 /usr/bin/composer
 composer global require "laravel/installer"
 echo export PATH='${PATH}':~/.composer/vendor/bin | tee -a ~/.bash_profile
 
+# Enable mod_rewrite
+sudo a2enmod rewrite
+
 # Cleanup
 sudo apt-get clean
 
