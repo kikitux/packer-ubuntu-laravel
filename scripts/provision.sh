@@ -12,7 +12,7 @@ curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 # Install packages
 export DEBIAN_FRONTEND=noninteractive
 unset PACKAGES
-PACKAGES="apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl nodejs git"
+PACKAGES="apache2 mariadb-client mariadb-server php5 php5-cli php5-mysql php5-gd php5-curl php5-mcrypt nodejs git"
 sudo -E apt-get install -y -q --no-install-recommends ${PACKAGES}
 
 # Setup Apache virtual host
@@ -37,8 +37,9 @@ sudo chmod 755 /usr/bin/composer
 composer global require "laravel/installer"
 echo export PATH='${PATH}':~/.composer/vendor/bin | tee -a ~/.bash_profile
 
-# Enable mod_rewrite
+# Enable mod_rewrite and mcrypt
 sudo a2enmod rewrite
+sudo php5enmod mcrypt
 
 # Cleanup
 sudo apt-get clean
