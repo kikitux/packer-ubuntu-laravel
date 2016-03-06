@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Use apt mirrors
+# Use AU mirrors
 sudo sed -i \
--e 's/http:\/\/us.archive.ubuntu.com\/ubuntu/mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/' \
--e 's/http:\/\/archive.ubuntu.com\/ubuntu/mirror:\/\/mirrors.ubuntu.com\/mirrors.txt/' \
+-e 's/us.archive.ubuntu.com/au.archive.ubuntu.com/' \
+-e 's/archive.ubuntu.com/au.archive.ubuntu.com/' \
 /etc/apt/sources.list
 
 # Add NodeSource repo
@@ -52,5 +52,5 @@ sync
 sudo dd if=/dev/zero of=/EMPTY bs=1M || true
 sudo rm -f /EMPTY
 sync
-echo 3 > /proc/sys/vm/drop_caches
+sudo echo 3 > /proc/sys/vm/drop_caches
 sync
