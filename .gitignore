@@ -2,3 +2,4 @@
 /source/*.vmdk
 /source/*.ovf
 /*.box
+/latest.txt
