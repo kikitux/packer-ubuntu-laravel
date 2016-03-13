@@ -2,8 +2,8 @@
 
 # Use AU mirrors
 sudo sed -i \
--e 's/us.archive.ubuntu.com/au.archive.ubuntu.com/' \
--e 's/archive.ubuntu.com/au.archive.ubuntu.com/' \
+-e 's/\/us.archive.ubuntu.com/\/au.archive.ubuntu.com/' \
+-e 's/\/archive.ubuntu.com/\/au.archive.ubuntu.com/' \
 /etc/apt/sources.list
 
 # Add NodeSource repo
